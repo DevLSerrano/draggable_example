@@ -10,7 +10,6 @@ class MyCard extends StatelessWidget {
   final String content;
   final void Function()? onDragStarted;
   final void Function(DraggableDetails)? onDragEnd;
-
   @override
   Widget build(BuildContext context) {
     return Draggable<String>(
@@ -21,10 +20,8 @@ class MyCard extends StatelessWidget {
       onDragEnd: onDragEnd,
 
       //Child é o Widget exibido
-      child: ListTile(
-        leading: const FlutterLogo(),
-        title: Text(content),
-        trailing: const Icon(Icons.arrow_right),
+      child: Chip(
+        label: Text(content),
       ),
     );
   }

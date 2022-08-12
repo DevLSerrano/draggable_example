@@ -33,16 +33,21 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Draggable LS example'),
       ),
-      body: ListView.builder(
-        itemCount: myList.length,
-        itemBuilder: (context, index) => MyCard(
-          content: myList[index],
-          onDragStarted: () => setState(() {
-            showFab = true;
-          }),
-          onDragEnd: (detail) => setState(() {
-            showFab = false;
-          }),
+      body: Center(
+        child: Column(
+          children: myList
+              .map(
+                (e) => MyCard(
+                  content: e,
+                  onDragStarted: () => setState(() {
+                    showFab = true;
+                  }),
+                  onDragEnd: (detail) => setState(() {
+                    showFab = false;
+                  }),
+                ),
+              )
+              .toList(),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
